@@ -1,3 +1,5 @@
+// This file describes our Message data structure.
+
 #ifndef MESSAGE
 #define MESSAGE
 

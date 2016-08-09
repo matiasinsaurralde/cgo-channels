@@ -1,3 +1,5 @@
+// This file declares the functions that will be exported by chan.go.
+
 #include "message.h"
 
 #ifndef COMMON
