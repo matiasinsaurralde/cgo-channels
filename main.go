@@ -8,8 +8,13 @@ void publishString();
 // This function loops forever, and calls publishString (defined in chan.go) every 2 seconds.
 void runMessageLoop() {
   while(1) {
+
+    // This will call publishString(), as defined in chan.go:
     publishString("Hello from C");
+
+    // Sleep some time:
     usleep(2000000);
+
   };
 };
 
@@ -21,12 +26,12 @@ import(
   "time"
 )
 
-// We define the channel at this level, chan.go needs to see this too.
+// We declare the channel at this level, chan.go needs to see this too!
 var stringChannel chan string
 
 func main() {
 
-  // Initializes a channel with string type.
+  // Initializes a channel with "string" type.
   stringChannel = make(chan string)
 
   // This goroutine calls the C function:
@@ -43,7 +48,7 @@ func main() {
     }
   }()
 
-  // This is the "main" loop, it prints every message received my the channel:
+  // This is our "main" loop, it prints every message received by the channel:
   for {
     receivedString := <-stringChannel
     fmt.Println("Receiving:", receivedString)
