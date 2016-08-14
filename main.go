@@ -2,7 +2,7 @@ package main
 
 /*
 #cgo openmp CFLAGS: -fopenmp
-#cgo openmp LDFLAGS: -fopenmp
+#cgo openmp linux LDFLAGS: -fopenmp -ldl
 #cgo openmp CFLAGS: -DENABLE_OPENMP
 
 #include <stdio.h>
