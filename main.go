@@ -1,6 +1,8 @@
 package main
 
 /*
+#cgo openmp CFLAGS: -fopenmp
+#cgo openmp LDFLAGS: -fopenmp
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,6 +10,7 @@ package main
 
 #include "common.h"
 #include "message.h"
+#include "openmp_sender.h"
 
 // These are the functions exported from chan.go:
 
@@ -45,7 +48,6 @@ void sendToMessageChannel() {
 
   };
 };
-
 */
 import "C"
 
@@ -97,6 +99,10 @@ func main() {
       messageChannel <- someMessage
       time.Sleep( 3 * time.Second )
     }
+  }()
+
+  go func() {
+    C.parallelSend()
   }()
 
   // This is our "main" loop, it prints every message received by both channels:
