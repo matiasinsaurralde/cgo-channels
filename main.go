@@ -1,9 +1,8 @@
 package main
 
 /*
-#cgo openmp CFLAGS: -fopenmp
+#cgo openmp CFLAGS: -fopenmp -DENABLE_OPENMP
 #cgo openmp linux LDFLAGS: -fopenmp -ldl
-#cgo openmp CFLAGS: -DENABLE_OPENMP
 
 #include <stdio.h>
 #include <stdlib.h>
