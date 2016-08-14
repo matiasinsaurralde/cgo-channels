@@ -3,6 +3,8 @@ package main
 /*
 #cgo openmp CFLAGS: -fopenmp
 #cgo openmp LDFLAGS: -fopenmp
+#cgo openmp CFLAGS: -DENABLE_OPENMP
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,7 +12,12 @@ package main
 
 #include "common.h"
 #include "message.h"
+
+#ifdef ENABLE_OPENMP
 #include "openmp_sender.h"
+#else
+void parallelSend() {}
+#endif
 
 // These are the functions exported from chan.go:
 
